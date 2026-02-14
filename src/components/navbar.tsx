@@ -44,7 +44,7 @@ export default function Navbar({cart, onOpen}: any) {
         </div>
 
         {/* Mobile button */}
-       <div className="flex items-center gap-6 text-white font-semibold">
+       <div className="flex md:hidden items-center gap-6 text-white font-semibold">
          <button
           onClick={() => setMobileOpen(!mobileOpen)}
           className="md:hidden"
