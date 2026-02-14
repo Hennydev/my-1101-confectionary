@@ -3,6 +3,8 @@ import Carousel from "@/components/carousel";
 import { motion } from "framer-motion";
 import PageWrapper from "@/components/pageWrapper";
 import WhatsAppButton from "@/components/whatsapp";
+import { useEffect, useState } from "react";
+import Modal from "@/components/modal";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,106 +15,168 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
-const foods = [
-  {
-    id: 1,
-    image: "image/iyan-efo.jpg",
-    name: "Iyan with Efo Riro",
-    description:
-      "A classic Nigerian dish of pounded yam served with a rich and flavorful spinach stew.",
-    price: "2000",
-    buttonLink: "#",
-  },
-  {
-    id: 2,
-    image: "image/packed-fried-rice.jpeg",
-    name: "Packed Fried Ricef",
-    description:
-      "A vibrant and delicious Nigerian fried rice packed with colorful vegetables, tender meat, and aromatic spices.",
-    price: "4800",
-    buttonLink: "#",
-  },
-  {
-    id: 3,
-    image: "image/Chicken-Wings.jpg",
-    name: "Chicken Wings",
-    description:
-      "Crispy, tender chicken wings seasoned to perfection and served with a side of your choice.",
-    price: "12000",
-    buttonLink: "#",
-  },
-  {
-    id: 3,
-    image: "image/hero-chops.jpeg",
-    name: "Small Chops",
-    description:
-      "Puff-puff, samosas, spring rolls and more — perfect for parties and events.",
-    price: "15000",
-    buttonLink: "#",
-  },
-  {
-    id: 3,
-    image: "image/jollof rice.jpeg",
-    name: "Jollof Rice",
-    description:
-      "A flavorful and aromatic Nigerian jollof rice dish served with your choice of protein.",
-    price: "12000",
-    buttonLink: "#",
-  },
-  {
-    id: 3,
-    image: "image/pasta.jpeg",
-    name: "Pasta",
-    description:
-      "A delicious and hearty pasta dish made with premium ingredients and served with your choice of sauce.",
-    price: "5000",
-    buttonLink: "#",
-  },
-  {
-    id: 3,
-    image: "image/zobo.jpeg",
-    name: "Zobo Drink",
-    description: "A refreshing drink for you and family",
-    price: "1200",
-    buttonLink: "#",
-  },
-  {
-    id: 3,
-    image: "image/tigernut.jpeg",
-    name: "Tigernut Drink",
-    description: "A refreshing drink for you and family",
-    price: "1500",
-    buttonLink: "#",
-  },
-  {
-    id: 3,
-    image: "image/food-tray.jpg",
-    name: "Varieties of soups",
-    description:
-      "Varieties of soups to fill up your refrigerators for busy days",
-    price: "15000",
-    buttonLink: "#",
-  },
-  {
-    id: 3,
-    image: "image/parfait.jpg",
-    name: "Parfait",
-    description:
-      "A mixture of nuts, milk and yourghut to satisfy your cravings",
-    price: "15000",
-    buttonLink: "#",
-  },
-];
 
 export default function Home() {
+  const [cart, setCart] = useState(()=>{
+    if(typeof window !== "undefined"){
+      const savedCart = localStorage.getItem("cart");
+      return savedCart ? JSON.parse(savedCart) : [];
+    }
+    return [];
+  });
+  const [foods, setFoods] = useState<any[]>([
+    {
+      id: 1,
+      image: "image/iyan-efo.jpg",
+      name: "Iyan with Efo Riro",
+      description:
+        "A classic Nigerian dish of pounded yam served with a rich and flavorful spinach stew.",
+      price: "2000",
+      buttonLink: "#",
+      qty: 0,
+    },
+    {
+      id: 2,
+      image: "image/packed-fried-rice.jpeg",
+      name: "Packed Fried Ricef",
+      description:
+        "A vibrant and delicious Nigerian fried rice packed with colorful vegetables, tender meat, and aromatic spices.",
+      price: "4800",
+      buttonLink: "#",
+      qty: 0,
+    },
+    {
+      id: 3,
+      image: "image/Chicken-Wings.jpg",
+      name: "Chicken Wings",
+      description:
+        "Crispy, tender chicken wings seasoned to perfection and served with a side of your choice.",
+      price: "12000",
+      buttonLink: "#",
+      qty: 0,
+    },
+    {
+      id: 4,
+      image: "image/hero-chops.jpeg",
+      name: "Small Chops",
+      description:
+        "Puff-puff, samosas, spring rolls and more — perfect for parties and events.",
+      price: "15000",
+      buttonLink: "#",
+      qty: 0,
+    },
+    {
+      id: 5,
+      image: "image/jollof rice.jpeg",
+      name: "Jollof Rice",
+      description:
+        "A flavorful and aromatic Nigerian jollof rice dish served with your choice of protein.",
+      price: "12000",
+      buttonLink: "#",
+      qty: 0,
+    },
+    {
+      id: 6,
+      image: "image/pasta.jpeg",
+      name: "Pasta",
+      description:
+        "A delicious and hearty pasta dish made with premium ingredients and served with your choice of sauce.",
+      price: "5000",
+      buttonLink: "#",
+      qty: 0,
+    },
+    {
+      id: 7,
+      image: "image/zobo.jpeg",
+      name: "Zobo Drink",
+      description: "A refreshing drink for you and family",
+      price: "1200",
+      buttonLink: "#",
+      qty: 0,
+    },
+    {
+      id: 8,
+      image: "image/tigernut.jpeg",
+      name: "Tigernut Drink",
+      description: "A refreshing drink for you and family",
+      price: "1500",
+      buttonLink: "#",
+      qty: 0,
+    },
+    {
+      id: 9,
+      image: "image/food-tray.jpg",
+      name: "Varieties of soups",
+      description:
+        "Varieties of soups to fill up your refrigerators for busy days",
+      price: "15000",
+      buttonLink: "#",
+      qty: 0,
+    },
+    {
+      id: 10,
+      image: "image/parfait.jpg",
+      name: "Parfait",
+      description:
+        "A mixture of nuts, milk and yourghut to satisfy your cravings",
+      price: "15000",
+      buttonLink: "#",
+      qty: 0,
+    },
+  ]);
+  const [showCart, setShowCart] = useState(false);
+  const handleIncrement = (item: any) => {
+    // console.log(item)
+    setFoods((prev) => {
+      const updatedFoods = prev.map((food) =>
+        food.id === item.id ? { ...food, qty: food.qty + 1 } : food,
+      );
+      const foodCart = updatedFoods.filter((food) => food.qty > 0);
+      console.log(foodCart);
+      setCart(foodCart);
+      return updatedFoods;
+    });
+  };
+  const handleDecrement = (item: any) => {
+    setFoods((prev) => {
+      const updatedFoods = prev.map((food) =>
+        food.id === item.id
+          ? { ...food, qty: Math.max(0, food.qty - 1) }
+          : food,
+      );
+      const foodCart = updatedFoods.filter((food) => food.qty > 0);
+      console.log(foodCart);
+      setCart(foodCart);
+      return updatedFoods;
+    });
+  };
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
   return (
     <PageWrapper>
       <div className={`${geistSans.className} ${geistMono.className} `}>
         <div className="min-h-screen w-screen flex items-center justify-center">
-          <Carousel />
+          <Carousel
+            cart={cart}
+            isOpen={showCart}
+            onClose={() => setShowCart(false)}
+            onOpen={() => setShowCart(true)}
+          />
         </div>
-
-        <section className="py-24 bg-linear-to-b from-[#fffaf5] to-[#f3e9dc] overflow-hidden">
+        {showCart && (
+          <Modal
+            isOpen={showCart}
+            onClose={() => setShowCart(false)}
+            cart={cart}
+            onOpen={() => setShowCart(true)}
+          />
+        )}
+        <section
+          id="about"
+          className="py-24 bg-linear-to-b from-[#fffaf5] to-[#f3e9dc] overflow-hidden"
+        >
           <div className="w-[90%] md:w-[80%] mx-auto grid md:grid-cols-2 gap-12 items-center">
             {/* IMAGE */}
             <motion.div
@@ -152,6 +216,11 @@ export default function Home() {
               </p>
 
               <motion.button
+                onClick={() =>
+                  document
+                    .getElementById("menu")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-4 bg-yellow-600 text-black font-semibold rounded-md hover:bg-yellow-500"
@@ -162,7 +231,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="py-20 bg-white">
+        <section id="menu" className="py-20 bg-white">
           <div className="w-[90%] md:w-[80%] mx-auto">
             <h2 className="text-4xl font-bold text-center mb-12 text-[#2b160b]">
               Our Specialties
@@ -188,9 +257,27 @@ export default function Home() {
                   <div className="p-5">
                     <h3 className="font-bold text-xl">{food.name}</h3>
                     <p className="text-gray-500">{food.description}</p>
-                    <p className="text-yellow-600 font-bold mt-2">
-                      ₦{food.price}
-                    </p>
+                    <div className="flex items-center justify-between">
+                      <p className="text-yellow-600 font-bold mt-2">
+                        ₦{food.price}
+                      </p>
+                      <p className="text-yellow-600 font-bold mt-2">
+                        Qty {food.qty}
+                      </p>
+
+                      <button
+                        onClick={() => handleIncrement(food)}
+                        className="px-4 py-2 bg-yellow-600 font-bold text-white rounded-md hover:bg-yellow-500 transition"
+                      >
+                        +
+                      </button>
+                      <button
+                        onClick={() => handleDecrement(food)}
+                        className="px-4 py-2 bg-yellow-600 font-bold text-white rounded-md hover:bg-yellow-500 transition"
+                      >
+                        -
+                      </button>
+                    </div>
                   </div>
                 </motion.div>
               ))}
@@ -198,8 +285,67 @@ export default function Home() {
           </div>
           <WhatsAppButton />
         </section>
+        <section className="py-20 bg-linear-to-b from-[#fffaf5] to-[#f3e9dc]">
+          <div
+            id="testimonial"
+            className="flex flex-row mx-auto justify-center items-center pt-10 md:pt-20"
+          >
+            <p className="font-500 font-Caveat md:text-[40px] text-[24px] md:leading-[37.65px]">
+              What our customers say
+            </p>
+          </div>
+          <p className="text-center text-[#322727] md:text-base text-[14px] font-normal pt-4 pb-10 mb:pb-20 md:w-[35%] w-[95%] mx-auto leading-normal">
+            We are always having returning customers because we ensure we
+            deliver quality all the time, You can never regret booking us for
+            your events and cravings.
+          </p>
+          <div className="flex flex-row w-[90%] md:w-[80vw] no-scrollbar md:pb-20 pb-10 md:w-[80%] mx-auto space-x-4 md:space-x-10 overflow-x-scroll">
+            <div className="md:w-[700px] w-[400px] p-6 bg-white rounded-md border-top border-[0.5px] drop-shadow-lg flex-col justify-start items-start gap-4 inline-flex">
+              <div className="flex flex-row md:gap-4 gap-2 items-center w-full justify-start">
+                <div className="w-9 h-9 rounded-lg border border-[#322727]"></div>
+                <div className="space-y-1">
+                  <p className="w-52 text-[#322727] md:text-base text-sm font-bold font-['Caveat'] leading-none">
+                    Elizbeth
+                  </p>
+                  <p className="text-[#322727] md:text-sm text-xs font-normal font-['Caveat'] leading-none">
+                    The small chop was really tasty, I was craving for more.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="md:w-[700px] w-[400px] p-6 bg-white rounded-md border-top border-[0.5px] drop-shadow-lg flex-col justify-start items-start gap-4 inline-flex">
+              <div className="flex flex-row md:gap-4 gap-2 items-center w-full justify-start">
+                <div className="w-9 h-9 rounded-lg border border-[#322727]"></div>
+                <div className="space-y-1">
+                  <p className="w-52 text-[#322727] md:text-base text-sm font-bold font-['Caveat'] leading-none">
+                    Genesis
+                  </p>
+                  <p className="text-[#322727] md:text-sm text-xs font-normal font-['Caveat'] leading-none">
+                    The cake was yummy, I love it!!!
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="md:w-[700px] w-[400px] p-6 bg-white rounded-md border-top border-[0.5px] drop-shadow-lg flex-col justify-start items-start gap-4 inline-flex">
+              <div className="flex flex-row md:gap-4 gap-2 items-center w-full justify-start">
+                <div className="w-9 h-9 rounded-lg border border-[#322727]"></div>
+                <div className="space-y-1">
+                  <p className="w-52 text-[#322727] md:text-base text-sm font-bold font-['Caveat'] leading-none">
+                    Oyinkansola
+                  </p>
+                  <p className="text-[#322727] md:text-sm text-xs font-normal font-['Caveat'] leading-none">
+                    The pafait was superb, It was worth the price
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
-        <div className="h-full md:h-[40vh] bg-linear-to-r from-[#140a05]/95 to-[#140a05]/75 ">
+        <div
+          id="contact"
+          className="h-full md:h-[40vh] bg-linear-to-r from-[#140a05]/95 to-[#140a05]/75 "
+        >
           <div className="w-[90%] md:w-[80%] sm:flex lg:flex md:hidden flex-col md:flex-row items-start justify-between md:space-y-0 space-y-10 md:py-16 py-6 lg:w-[80%] mx-auto">
             <div>
               <div>
@@ -209,9 +355,6 @@ export default function Home() {
               </div>
             </div>
             <div>
-              <p className="text-[16px] font-bold pb-4 leading-normal text-white">
-                Useful Links
-              </p>
               <p>
                 <a
                   href="about.html"
@@ -260,7 +403,7 @@ export default function Home() {
                     </g>
                   </svg>
                 </span>
-                <p className="text-[14px] font-[400] leading-normal text-white">
+                <p className="text-[14px] font-400 leading-normal text-white">
                   4, Raheem Sooja Street, Igbooluwo estate, Ikorodu, Lagos State
                 </p>
               </div>
@@ -434,14 +577,14 @@ export default function Home() {
             <div className="flex flex-col md:space-y-2 space-y-4 w-full">
               <div></div>
               <div>
-                <p className="text-[14px] pt-4 font-[400] leading-normal text-[#cedbea]">
+                <p className="text-[14px] pt-4 font-400 leading-normal text-[#cedbea]">
                   About Us
                 </p>
-                <p className="text-[14px] py-2 font-[400] leading-normal text-[#cedbea]">
+                <p className="text-[14px] py-2 font-400 leading-normal text-[#cedbea]">
                   Contact Us
                 </p>
 
-                <p className="text-[14px] pt-2 font-[400] leading-normal text-[#cedbea]">
+                <p className="text-[14px] pt-2 font-400 leading-normal text-[#cedbea]">
                   Others
                 </p>
               </div>
@@ -469,7 +612,7 @@ export default function Home() {
                       </g>
                     </svg>
                   </span>
-                  <p className="text-[14px] font-[400] leading-normal text-[#cedbea]">
+                  <p className="text-[14px] font-400 leading-normal text-[#cedbea]">
                     4, Raheem Sooja Street, Igbooluwo estate, Ikorodu, Lagos
                     State
                   </p>
@@ -492,7 +635,7 @@ export default function Home() {
                   </span>
                   <a
                     href="tel:+2348130935623"
-                    className="text-[14px] font-[400] leading-normal text-[#cedbea]"
+                    className="text-[14px] font-400 leading-normal text-[#cedbea]"
                   >
                     +2348130935623
                   </a>
@@ -514,7 +657,7 @@ export default function Home() {
                   </span>
                   <a
                     href="mailto:bbalikis93@gmail.com"
-                    className="text-[14px] font-[400] leading-normal text-[#cedbea]"
+                    className="text-[14px] font-400 leading-normal text-[#cedbea]"
                   >
                     bbalikis93@gmail.com
                   </a>
@@ -631,7 +774,7 @@ export default function Home() {
                   </span>
                   <div className="w-10 h-10 bg-[#D9D9D9] rounded-full flex items-center justify-center">
                     <a href="https://wa.me/message/GPXHFW44MRMGI1">
-                      <img src="./asset/whatsapp.svg" alt="whatsap" />
+                      <img src="image/whatsapp.svg" alt="whatsap" />
                     </a>
                   </div>
                 </div>

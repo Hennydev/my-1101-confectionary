@@ -3,9 +3,12 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
-export default function Navbar() {
+
+export default function Navbar({cart, onOpen}: any) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  // const [cartItems, setCartItems] = useState(cart);
+
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 30);
@@ -30,6 +33,14 @@ export default function Navbar() {
           <a href="#menu">Menu</a>
           <a href="#about">About</a>
           <a href="#contact">Contact</a>
+          <div onClick={onOpen} className=" cursor-pointer relative"  >
+
+              <img src={"/image/cart.svg"} alt="Cart" className="w-6" />
+
+            <div className="absolute -top-2 -right-1 bg-white text-black rounded-full w-4 h-4 flex items-center justify-center text-xs">
+              {cart.length}
+            </div>
+          </div>
         </div>
 
         {/* Mobile button */}
@@ -52,6 +63,7 @@ export default function Navbar() {
           </div>
         </div>
       )}
+
     </motion.nav>
   );
 }
