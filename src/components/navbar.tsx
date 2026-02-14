@@ -44,18 +44,28 @@ export default function Navbar({cart, onOpen}: any) {
         </div>
 
         {/* Mobile button */}
-        <button
+       <div className="flex items-center gap-6 text-white font-semibold">
+         <button
           onClick={() => setMobileOpen(!mobileOpen)}
           className="md:hidden"
         >
           ☰
         </button>
+        <div onClick={onOpen} className=" cursor-pointer relative"  >
+
+              <img src={"/image/cart.svg"} alt="Cart" className="w-6" />
+
+            <div className="absolute -top-2 -right-1 bg-white text-black rounded-full w-4 h-4 flex items-center justify-center text-xs">
+              {cart.length}
+            </div>
+          </div>
+       </div>
       </div>
 
       {/* Mobile menu */}
       {mobileOpen && (
         <div className="bg-white shadow-md md:hidden">
-          <div className="flex flex-col p-6  gap-4">
+          <div className="flex flex-col p-6 text-gray-900  gap-4">
             <a href="#">Home</a>
             <a href="#menu">Menu</a>
             <a href="#about">About</a>

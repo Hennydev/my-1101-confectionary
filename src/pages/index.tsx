@@ -255,7 +255,7 @@ export default function Home() {
                   </div>
 
                   <div className="p-5">
-                    <h3 className="font-bold text-xl">{food.name}</h3>
+                    <h3 className="font-bold text-gray-900 text-xl">{food.name}</h3>
                     <p className="text-gray-500">{food.description}</p>
                     <div className="flex items-center justify-between">
                       <p className="text-yellow-600 font-bold mt-2">
@@ -290,7 +290,7 @@ export default function Home() {
             id="testimonial"
             className="flex flex-row mx-auto justify-center items-center pt-10 md:pt-20"
           >
-            <p className="font-500 font-Caveat md:text-[40px] text-[24px] md:leading-[37.65px]">
+            <p className="font-500 font-Caveat md:text-[40px] text-gray-900 text-[24px] md:leading-[37.65px]">
               What our customers say
             </p>
           </div>
