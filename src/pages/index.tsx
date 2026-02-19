@@ -326,11 +326,11 @@ export default function Home() {
                   transition={{ duration: 0.4 }}
                   className="bg-white rounded-2xl shadow-lg overflow-hidden"
                 >
-                  <div className="overflow-hidden">
+                  <div className="overflow-hidden cursor-pointer " onClick={() => window.open(food.buttonLink, "_blank")} >
                     <motion.img
                       src={food.image}
                       whileHover={{ scale: 1.1 }}
-                      className="w-full h-64 object-cover"
+                      className="w-full h-64 object-cover "
                     />
                   </div>
 
