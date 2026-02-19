@@ -372,11 +372,11 @@ export default function Home() {
             id="testimonial"
             className="flex flex-row mx-auto justify-center items-center pt-10 md:pt-20"
           >
-            <p className="font-500 font-Caveat md:text-[40px] text-gray-900 text-[24px] md:leading-[37.65px]">
+            <p className="font-500 font-Caveat md:text-[40px] md:text-gray-900  text-gray-100 text-[24px] md:leading-[37.65px]">
               What our customers say
             </p>
           </div>
-          <p className="text-center text-[#322727] md:text-base text-[14px] font-normal pt-4 pb-10 mb:pb-20 md:w-[35%] w-[95%] mx-auto leading-normal">
+          <p className="text-center md:text-[#322727] text-gray-400 md:text-base text-[14px] font-normal pt-4 pb-10 mb:pb-20 md:w-[35%] w-[95%] mx-auto leading-normal">
             We are always having returning customers because we ensure we
             deliver quality all the time, You can never regret booking us for
             your events and cravings.
