@@ -17,8 +17,8 @@ const geistMono = Geist_Mono({
 });
 
 export default function Home() {
-  const [cart, setCart] = useState(()=>{
-    if(typeof window !== "undefined"){
+  const [cart, setCart] = useState(() => {
+    if (typeof window !== "undefined") {
       const savedCart = localStorage.getItem("cart");
       return savedCart ? JSON.parse(savedCart) : [];
     }
@@ -27,52 +27,62 @@ export default function Home() {
   const [foods, setFoods] = useState<any[]>([
     {
       id: 1,
-      image: "image/iyan-efo.jpg",
-      name: "Iyan with Efo Riro",
+      image: "image/swallow.webp",
+      name: "Swallows like Pounded yam, Semo, Eba, Amala  with soup of choice ",
       description:
-        "A classic Nigerian dish of pounded yam served with a rich and flavorful spinach stew.",
-      price: "2000",
-      buttonLink: "#",
+        "Chat with us for your various types of swallow.",
+      price: "0",
+      buttonLink: "https://wa.me/message/GPXHFW44MRMGI1",
       qty: 0,
     },
     {
       id: 2,
-      image: "image/packed-fried-rice.jpeg",
-      name: "Packed Fried Ricef",
+      image: "image/friedrice.jpeg",
+      name: "Packed Fried Rice",
       description:
         "A vibrant and delicious Nigerian fried rice packed with colorful vegetables, tender meat, and aromatic spices.",
-      price: "4800",
-      buttonLink: "#",
+      price: "3500",
+      buttonLink: "https://wa.me/message/GPXHFW44MRMGI1",
       qty: 0,
     },
     {
       id: 3,
       image: "image/Chicken-Wings.jpg",
-      name: "Chicken Wings",
+      name: "Chicken",
       description:
-        "Crispy, tender chicken wings seasoned to perfection and served with a side of your choice.",
-      price: "12000",
-      buttonLink: "#",
+        "Crispy, tender chicken  seasoned to perfection and served with a side of your choice.",
+      price: "3500",
+      buttonLink: "https://wa.me/message/GPXHFW44MRMGI1",
+      qty: 0,
+    },
+    {
+      id: 3,
+      image: "image/turkey.jpeg",
+      name: "Turkey ",
+      description:
+        "Crispy, tender turkey seasoned to perfection and served with a side of your choice.",
+      price: "4500",
+      buttonLink: "https://wa.me/message/GPXHFW44MRMGI1",
       qty: 0,
     },
     {
       id: 4,
-      image: "image/hero-chops.jpeg",
+      image: "image/schops.jpeg",
       name: "Small Chops",
       description:
         "Puff-puff, samosas, spring rolls and more — perfect for parties and events.",
-      price: "15000",
-      buttonLink: "#",
+      price: "2500",
+      buttonLink: "https://wa.me/message/GPXHFW44MRMGI1",
       qty: 0,
     },
     {
       id: 5,
-      image: "image/jollof rice.jpeg",
+      image: "image/jollof.jpeg",
       name: "Jollof Rice",
       description:
         "A flavorful and aromatic Nigerian jollof rice dish served with your choice of protein.",
-      price: "12000",
-      buttonLink: "#",
+      price: "3500",
+      buttonLink: "https://wa.me/message/GPXHFW44MRMGI1",
       qty: 0,
     },
     {
@@ -90,7 +100,7 @@ export default function Home() {
       image: "image/zobo.jpeg",
       name: "Zobo Drink",
       description: "A refreshing drink for you and family",
-      price: "1200",
+      price: "1000",
       buttonLink: "#",
       qty: 0,
     },
@@ -99,7 +109,7 @@ export default function Home() {
       image: "image/tigernut.jpeg",
       name: "Tigernut Drink",
       description: "A refreshing drink for you and family",
-      price: "1500",
+      price: "2000",
       buttonLink: "#",
       qty: 0,
     },
@@ -108,9 +118,9 @@ export default function Home() {
       image: "image/food-tray.jpg",
       name: "Varieties of soups",
       description:
-        "Varieties of soups to fill up your refrigerators for busy days",
+        "Chat with us for the varieties of soups to fill up your refrigerators for busy days",
       price: "15000",
-      buttonLink: "#",
+      buttonLink: "https://wa.me/message/GPXHFW44MRMGI1",
       qty: 0,
     },
     {
@@ -119,8 +129,77 @@ export default function Home() {
       name: "Parfait",
       description:
         "A mixture of nuts, milk and yourghut to satisfy your cravings",
-      price: "15000",
+      price: "4500",
       buttonLink: "#",
+      qty: 0,
+    },
+    {
+      id: 11,
+      image: "image/chinchin.jpeg",
+      name: "Chin-chin",
+      description:
+        "Check here for the range of price and quantities for our crunchy chinchin (5Litres for 30k, 4Litres for  25k, 3Litres for 20k, 2Litres for  15k, 1Litre for  10k), you can click here to chat with for for your preference.",
+      price: "10000",
+      buttonLink: "https://wa.me/message/GPXHFW44MRMGI1",
+      qty: 0,
+    },
+    {
+      id: 12,
+      image: "image/cookies.jpeg",
+      name: "Cookies",
+      description:
+        "Delicious and crispy cookies made with premium ingredients, perfect for sharing.",
+      price: "4000",
+      buttonLink: "#",
+      qty: 0,
+    },
+    {
+      id: 13,
+      image: "image/liver.jpeg",
+      name: "Liver Detox Drink",
+      description:
+        "A refreshing and healthy drink to support liver health and detoxification.",
+      price: "3500",
+      buttonLink: "#",
+      qty: 0,
+    },
+    {
+      id: 14,
+      image: "image/discake.jpeg",
+      name: "Cakes",
+      description: "Chat with us for your wedding, birthday and special celebration cakes.",
+      price: "10000",
+      buttonLink: "https://wa.me/message/GPXHFW44MRMGI1",
+      qty: 0,
+    },
+    {
+      id: 15,
+      image: "image/readytofry.jpeg",
+      name: "Ready to fry chops",
+      description:
+        "10pcs of Ready-to-fry chops for quick and easy small chops preparation.",
+      price: "3500",
+      buttonLink: "#",
+      qty: 0,
+    },
+    {
+      id: 16,
+      image: "image/bred.jpeg",
+      name: "Banana Bread",
+      description:
+        "Freshly baked bread made with premium ingredients. Perfect for breakfast or as a side to your meals.",
+      price: "1500",
+      buttonLink: "#",
+      qty: 0,
+    },
+    {
+      id: 17,
+      image: "image/dessert.jpeg",
+      name: "Desserts",
+      description:
+        "Chat with us for the price of our delicious and indulgent desserts, made with premium ingredients and perfect for satisfying your sweet tooth.",
+      price: "0",
+      buttonLink: "https://wa.me/message/GPXHFW44MRMGI1",
       qty: 0,
     },
   ]);
@@ -171,13 +250,14 @@ export default function Home() {
             onClose={() => setShowCart(false)}
             cart={cart}
             onOpen={() => setShowCart(true)}
+            clearCart={() => setCart([])}
           />
         )}
         <section
           id="about"
-          className="py-24 bg-linear-to-b from-[#fffaf5] to-[#f3e9dc] overflow-hidden"
+          className="py-20 bg-linear-to-b from-[#fffaf5] to-[#f3e9dc] overflow-hidden"
         >
-          <div className="w-[90%] md:w-[80%] mx-auto grid md:grid-cols-2 gap-12 items-center">
+          <div className="w-[90%] md:w-[80%] mx-auto grid md:grid-cols-2 gap-10 items-center">
             {/* IMAGE */}
             <motion.div
               initial={{ opacity: 0, x: -80 }}
@@ -255,7 +335,9 @@ export default function Home() {
                   </div>
 
                   <div className="p-5">
-                    <h3 className="font-bold text-gray-900 text-xl">{food.name}</h3>
+                    <h3 className="font-bold text-gray-900 text-xl">
+                      {food.name}
+                    </h3>
                     <p className="text-gray-500">{food.description}</p>
                     <div className="flex items-center justify-between">
                       <p className="text-yellow-600 font-bold mt-2">
@@ -342,6 +424,33 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="w-[90%] md:w-[80%] mx-auto  flex flex-col md:flex-row items-center py-20 justify-center gap-10">
+
+            <img
+              src="/image/event.jpg"
+              alt="event-img"
+              className=" w-full md:w-[40%] rounded-lg"
+            />
+            <div className="flex flex-col items-center justify-center">
+              <p className="font-500 font-Caveat md:text-[40px] text-gray-900 text-[24px] md:leading-[37.65px]">
+                Catering & Bulk Orders
+              </p>
+              <p className="text-center text-[#322727] md:text-base text-[14px] font-normal pt-4 pb-10 mb:pb-20 md:w-[70%] w-[95%] mx-auto leading-normal">
+                Hosting a birthday, office lunch, wedding, or special event? We
+                provide fresh meals in large quantities tailored to your needs.
+              </p>
+              <motion.a
+                href="https://wa.me/2348130935623?text=Hello%2C%20I%20am%20interested%20in%20catering%20services.%20Please%20provide%20more%20details."
+                target="_blank"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 bg-yellow-600 text-black font-semibold rounded-md hover:bg-yellow-500 transition"
+              >
+                Book Now
+              </motion.a>
+            </div>
+
+        </section>
         <div
           id="contact"
           className="h-full md:h-[40vh] bg-linear-to-r from-[#140a05]/95 to-[#140a05]/75 "

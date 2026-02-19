@@ -19,13 +19,13 @@ const slides = [
   },
   {
     id: 2,
-    image: "/image/hero-cake.jpg",
+    image: "/image/cakes.jpg",
     title: "Sweet Moments, Beautifully Baked",
     subtitle:
       "Rich chocolate cakes and pastries crafted for birthdays, weddings and special celebrations.",
     buttonText: "Order Cakes",
     buttonLink: "https://wa.me/message/GPXHFW44MRMGI1",
-    img: "/image/cakes-removebg.png",
+    img: "/image/hero-cake.png",
   },
   {
     id: 3,

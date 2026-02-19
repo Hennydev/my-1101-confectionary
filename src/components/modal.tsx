@@ -1,4 +1,6 @@
-const Modal = ({ isOpen, onClose, cart }: any) => {
+import { clear } from "console";
+
+const Modal = ({ isOpen, onClose, cart, clearCart }: any) => {
     const buildWhatsAppMessage = (cart: any[]) => {
       if (cart.length === 0) return "Hi, I would like to place an order.";
 
@@ -12,7 +14,21 @@ const Modal = ({ isOpen, onClose, cart }: any) => {
 
       return encodeURIComponent(message);
     };
+const handleCheckout = () => {
+  const whatsappMessage = buildWhatsAppMessage(cart);
+  const whatsappLink = `https://wa.me/2348130935623?text=${whatsappMessage}`;
+  window.open(whatsappLink, "_blank");
+  clearCart();
+  // const confirmClear = window.confirm(
+  //   "After sending the message on WhatsApp, click OK to clear your cart.",
+  // );
+  // if (confirmClear) {
+  //   clearCart();
+  //  sessionStorage.removeItem("cart");
+  //  window.location.reload();
+  // }
 
+}
   return (
     <>
       {/* Backdrop */}
@@ -77,15 +93,13 @@ const Modal = ({ isOpen, onClose, cart }: any) => {
 
         {/* Footer */}
         <div className="absolute bottom-0 w-full p-4 border-t bg-white">
-          <button
+          <button onClick={handleCheckout}
             className="w-full bg-black text-white py-3 rounded-xl
             hover:bg-gray-800 transition"
           >
-            <a
-              href={`https://wa.me/2348130935623?text=${buildWhatsAppMessage(cart)}`}
-            >
+
               Send Order via WhatsApp
-            </a>
+
           </button>
         </div>
       </div>

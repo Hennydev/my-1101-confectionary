@@ -25,7 +25,7 @@ export default function Navbar({cart, onOpen}: any) {
       }`}
     >
       <div className="w-[90%] md:w-[80%] mx-auto flex justify-between items-center">
-        <h1 className="font-bold text-xl text-white">1101 Confectionary</h1>
+        <h1 className="font-bold text-[16px] md:text-[20px] text-white">1101 Confectionaries</h1>
 
         {/* Desktop menu */}
         <div className="hidden md:flex gap-10 text-white font-semibold">
