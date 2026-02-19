@@ -28,7 +28,7 @@ export default function Home() {
     {
       id: 1,
       image: "image/swallow.webp",
-      name: "Swallows like Pounded yam, Semo, Eba, Amala  with soup of choice ",
+      name: "Swallows like Pounded yam, Semo, Eba, Amala available with soup of choice ",
       description:
         "Chat with us for your various types of swallow.",
       price: "0",
@@ -48,7 +48,7 @@ export default function Home() {
     {
       id: 3,
       image: "image/Chicken-Wings.jpg",
-      name: "Chicken",
+      name: "Peppered Chicken",
       description:
         "Crispy, tender chicken  seasoned to perfection and served with a side of your choice.",
       price: "3500",
@@ -58,7 +58,7 @@ export default function Home() {
     {
       id: 3,
       image: "image/turkey.jpeg",
-      name: "Turkey ",
+      name: "Fried Turkey ",
       description:
         "Crispy, tender turkey seasoned to perfection and served with a side of your choice.",
       price: "4500",
@@ -138,7 +138,7 @@ export default function Home() {
       image: "image/chinchin.jpeg",
       name: "Chin-chin",
       description:
-        "Check here for the range of price and quantities for our crunchy chinchin (5Litres for 30k, 4Litres for  25k, 3Litres for 20k, 2Litres for  15k, 1Litre for  10k), you can click here to chat with for for your preference.",
+        "Check here for the range of price and quantities for our crunchy chinchin (5Litres for 30k, 4Litres for  25k, 3Litres for 20k, 2Litres for  15k, 1Litre for  10k), you can click here to chat with for your preference.",
       price: "10000",
       buttonLink: "https://wa.me/message/GPXHFW44MRMGI1",
       qty: 0,
@@ -372,16 +372,16 @@ export default function Home() {
             id="testimonial"
             className="flex flex-row mx-auto justify-center items-center pt-10 md:pt-20"
           >
-            <p className="font-500 font-Caveat md:text-[40px] md:text-gray-900  text-gray-100 text-[24px] md:leading-[37.65px]">
+            <p className="font-500 font-Caveat md:text-[40px] text-gray-900 text-[24px] md:leading-[37.65px]">
               What our customers say
             </p>
           </div>
-          <p className="text-center md:text-[#322727] text-gray-400 md:text-base text-[14px] font-normal pt-4 pb-10 mb:pb-20 md:w-[35%] w-[95%] mx-auto leading-normal">
+          <p className="text-center text-[#322727] md:text-base text-[14px] font-normal pt-4 pb-10 mb:pb-20 md:w-[35%] w-[95%] mx-auto leading-normal">
             We are always having returning customers because we ensure we
             deliver quality all the time, You can never regret booking us for
             your events and cravings.
           </p>
-          <div className="flex flex-row w-[90%] md:w-[80vw] no-scrollbar md:pb-20 pb-10 md:w-[80%] mx-auto space-x-4 md:space-x-10 overflow-x-scroll">
+          <div className="flex flex-row w-[90%] no-scrollbar md:pb-20 pb-10 md:w-[80%] mx-auto space-x-4 md:space-x-10 overflow-x-scroll">
             <div className="md:w-[700px] w-[400px] p-6 bg-white rounded-md border-top border-[0.5px] drop-shadow-lg flex-col justify-start items-start gap-4 inline-flex">
               <div className="flex flex-row md:gap-4 gap-2 items-center w-full justify-start">
                 <div className="w-9 h-9 rounded-lg border border-[#322727]"></div>
@@ -432,10 +432,10 @@ export default function Home() {
               className=" w-full md:w-[40%] rounded-lg"
             />
             <div className="flex flex-col items-center justify-center">
-              <p className="font-500 font-Caveat md:text-[40px] text-gray-900 text-[24px] md:leading-[37.65px]">
+              <p className="font-500 font-Caveat md:text-[40px] md:text-gray-900 text-gray-100 text-[24px] md:leading-[37.65px]">
                 Catering & Bulk Orders
               </p>
-              <p className="text-center text-[#322727] md:text-base text-[14px] font-normal pt-4 pb-10 mb:pb-20 md:w-[70%] w-[95%] mx-auto leading-normal">
+              <p className="text-center md:text-[#322727]  md:text-base text-[14px] text-gray-400 font-normal pt-4 pb-10 mb:pb-20 md:w-[70%] w-[95%] mx-auto leading-normal">
                 Hosting a birthday, office lunch, wedding, or special event? We
                 provide fresh meals in large quantities tailored to your needs.
               </p>
